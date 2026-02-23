@@ -13,9 +13,12 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        Post::create(['title' => 'Traveling to europe',
-        'content' => 'Some text context']);
+        Post::create(['title' => $request->input('title'),
+        'content' => $request->input('content')]);
         return 'success';
+    }
+    public function index(){
+        return Post::all();
     }
 }
 
